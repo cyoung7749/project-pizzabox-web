@@ -9,7 +9,8 @@ using PizzaBox.Client.Models;
 
 namespace PizzaBox.Client.Controllers
 {
-  public class HomeController : Controller
+  //[Route("/order/[controller]/[action]")]
+  public class HomeController : Controller 
   {
     private readonly ILogger<HomeController> _logger;
 
@@ -20,8 +21,9 @@ namespace PizzaBox.Client.Controllers
 
     public IActionResult Index()
     {
-      //ViewBag.Order = new ViewOrderModel();
-      return View("Index"); //specify which view you want, cause this is just lucky that we found a "view"
+      //ViewBag.Order = new OrderViewModel();
+      return View(); //specify which view you want, cause this is just lucky that we found a "view"
+      //"Index", new OrderViewModel()
     }
 
     public IActionResult Privacy()

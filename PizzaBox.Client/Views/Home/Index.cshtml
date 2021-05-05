@@ -6,4 +6,15 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+@model PizzaBox.Client.Models.OrderViewModel
 
+<body>
+    @* TAG HELPER WAY*@
+    <form asp-controller="order" method="post">
+    @foreach (var item in Model.Crusts)
+    {
+        <label asp-for="@item">@item</label>
+        <input type="radio" asp-for="@Model.SelectedCrust" value="@item"
+    }
+    </form>
+</body>

@@ -1,13 +1,22 @@
-using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using PizzaBox.Client.Models;
 
-namespace PizzaBox.Client.Models
+namespace PizzaBox.Client.Controllers
 {
-  public class OrderViewModel
+  //[Route("[controller]")]
+  public class OrderController : Controller
   {
-    public List<string> Crusts { get; set; }
-    public List<string> Sizes { get; set; }
-    public List<string> Toppings { get; set; }
-    public string SelectedCrust { get; set; }
-    public string SelectedSize { get; set; }
+    [HttpGet]
+    [HttpPost]
+    public string Ordaw(OrderViewModel order)
+    {
+      if (ModelState.IsValid)
+      //{order != null & order.SelectedCrust != null}
+      {
+      return order.SelectedCrust;
+      }
+      return "no";
+      //return null;
+    }
   }
-}
+} 
