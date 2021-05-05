@@ -3,20 +3,27 @@ using PizzaBox.Client.Models;
 
 namespace PizzaBox.Client.Controllers
 {
-  //[Route("[controller]")]
+  [Route("[controller]")]
   public class OrderController : Controller
   {
     [HttpGet]
     [HttpPost]
-    public string Ordaw(OrderViewModel order)
+    [ValidateAntiForgeryToken]
+    public string Create(OrderViewModel order)
     {
       if (ModelState.IsValid)
-      //{order != null & order.SelectedCrust != null}
       {
       return order.SelectedCrust;
-      }
+      } 
       return "no";
-      //return null;
     }
+/*     public string SelectedSize(OrderViewModel order) //do I need this?
+    {
+      if (ModelState.IsValid)
+      {
+      return order.SelectedSize;
+      }
+      return "no"; 
+    }*/
   }
 } 

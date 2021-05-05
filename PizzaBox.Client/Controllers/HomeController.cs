@@ -21,11 +21,14 @@ namespace PizzaBox.Client.Controllers
 
     public IActionResult Index()
     {
-      //ViewBag.Order = new OrderViewModel();
-      return View(); //specify which view you want, cause this is just lucky that we found a "view"
-      //"Index", new OrderViewModel()
+      ViewBag.Order = new OrderViewModel();
+      return View("Index", new OrderViewModel()); //specify which view you want, cause this is just lucky that we found a "view"
+      //"Index", 
     }
-
+    public IActionResult Order()
+    {
+      return Order();
+    }
     public IActionResult Privacy()
     {
       return View();
