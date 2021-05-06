@@ -9,9 +9,9 @@ namespace PizzaBox.Client.Models
 {
     public class OrderViewModel : IValidatableObject
     {
-        public List<string> Crusts { get; set; }
-        public List<string> Sizes { get; set; }
-        public List<string> Toppings { get; set; }
+        public List<Crust> Crusts { get; set; }
+        public List<Size> Sizes { get; set; }
+        public List<Topping> Toppings { get; set; }
         // = new List<string> { "Original", "Stuffed Crust", "Pretzel" };
         // = new List<string> {"Small", "Medium","Large"};
         // = new List<string> {"Nara", "Mozz", "Basil", "Pep", "Saus"};

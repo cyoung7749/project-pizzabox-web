@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PizzaBox.Client.Models;
-using PizzaBox.Storing;
 using PizzaBox.Storing.Repositories;
+using PizzaBox.Storing;
 
 namespace PizzaBox.Client.Controllers
 {
-  [Route("[controller]")]
+  //[Route("[controller]")]
   public class HomeController : Controller 
   {
     private readonly UnitOfWork _unitOfWork = new UnitOfWork();
@@ -21,12 +21,12 @@ namespace PizzaBox.Client.Controllers
       _unitOfWork = unitOfWork;
     }
 
-  private readonly ILogger<HomeController> _logger;
+/*   private readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger)
     {
       _logger = logger;
-    }    
+    }     */
 
     //If I wanted to use DIP, I'd have to do _unitOfWork = UnitOfWork;
     [HttpGet]

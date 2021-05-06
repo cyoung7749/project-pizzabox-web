@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model PizzaBox.Client.Models.OrderViewModel
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
@@ -25,6 +25,7 @@
     @Html.ValidationMessageFor(m => m.SelectedCrust)
     }<br>
     </form> *@
+@model PizzaBox.Client.Models.OrderViewModel
 
 <body>
     @Html.AntiForgeryToken()
