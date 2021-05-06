@@ -1,7 +1,7 @@
 namespace PizzaBox.Domain.Models
 {
-    public class Toppings
-    {
-      
-    }
+  public class Topping
+  {
+
+  }
 }

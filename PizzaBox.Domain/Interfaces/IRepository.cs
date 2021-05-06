@@ -1,11 +1,12 @@
+using System.Collections.Generic;
 
 namespace PizzaBox.Domain.Interfaces
 {
     public interface IRepository<T> where T : class
     {  
-    IEnumberable<T> Create(); //Select
-    bool T Update(); //Insert
-    IEnumberable<T> T Read(); //Update
-    bool T Delete();
+    IEnumerable<T> Create(); //Select
+    bool Update(); //Insert
+    T Read(); //Update
+    bool Delete();
     }
 }

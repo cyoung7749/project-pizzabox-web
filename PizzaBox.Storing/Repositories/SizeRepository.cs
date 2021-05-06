@@ -1,12 +1,27 @@
+using System.Collections.Generic;
 using PizzaBox.Domain.Interfaces;
+using PizzaBox.Domain.Models;
+
 
 namespace PizzaBox.Domain.Repositories
 {
   public class SizeRepository: IRepository<Size>
   {
-    public class IEnumberable<Crust> Create(){} //Select
-    public class Crust Update(){} //Insert
-    public class IEnumberable<Crust> Read(){} //Update
-    public class Crust Delete(){}
+    public IEnumerable<Size> Create()
+    {
+            throw new System.NotImplementedException();
+    } //Select
+    public bool Update()
+    {
+            throw new System.NotImplementedException();
+    } //Insert
+    public Size Read()
+    {
+            throw new System.NotImplementedException();
+    } //Update
+    public bool Delete()
+    {
+            throw new System.NotImplementedException();
+    }
   }
 }

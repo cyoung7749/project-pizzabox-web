@@ -5,9 +5,9 @@ using PizzaBox.Domain.Models;
 
 namespace PizzaBox.Domain.Repositories
 {
-  public class CrustRepository: IRepository<Crust>
+  public class ToppingRepository: IRepository<Topping>
   {
-    public IEnumerable<Crust> Create()
+    public IEnumerable<Topping> Create()
     {
             throw new System.NotImplementedException();
     } //Select
@@ -15,7 +15,7 @@ namespace PizzaBox.Domain.Repositories
     {
             throw new System.NotImplementedException();
     } //Insert
-    public Crust Read()
+    public Topping Read()
     {
             throw new System.NotImplementedException();
     } //Update
