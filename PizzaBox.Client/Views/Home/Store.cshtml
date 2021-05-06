@@ -1,0 +1,29 @@
+@{
+  ViewData["Title"] = "Store Side";
+}
+
+<div class="text-center">
+  <h1 class="display-4">Employees only (Testing Tag Helper Method)</h1>
+  <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@model PizzaBox.Client.Models.OrderViewModel
+
+@* TAG HELPER *@
+<form asp-controller="order" method="post">
+  <legend>CRUSS</legend>
+  @foreach (var item in Model.Sizes)
+  {
+    <input type="radio" id="@item" asp-for="@Model.SelectedSize" value="@item">
+    <label asp-for="@item">@item</label>
+    @Html.ValidationMessageFor(m => m.SelectedSize)
+  }<br>
+</form>
+<form asp-controller="order" method="post">
+  <legend>SIEZ</legend>
+  @foreach (var item in Model.Crusts)
+  {
+    <input type="radio" id="@item" asp-for="@Model.SelectedCrust" value="@item">
+    <label asp-for="@item">@item</label>
+    @Html.ValidationMessageFor(m => m.SelectedCrust)
+  }<br>
+</form>

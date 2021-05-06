@@ -27,12 +27,15 @@ namespace PizzaBox.Client.Models
         [Required(ErrorMessage = "* SELEC UR TOPS")]
         public List<string> SelectedToppings { get; set; }
 
-        public OrderViewModel(UnitOfWork unitOfWork)
+        //we need orderviewmodel without unitofwork
+        // using below, we won't need constructor since c# has implicit constructors
+        public void Load(UnitOfWork unitOfWork)
         {
             Crusts = unitOfWork.Crusts.Create().ToList();
             Sizes = unitOfWork.Sizes.Create().ToList();
             Toppings = unitOfWork.Toppings.Create().ToList();
         }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
             {
             if (SelectedToppings.Count < 2 || SelectedToppings.Count > 5)

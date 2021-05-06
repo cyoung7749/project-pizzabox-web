@@ -1,29 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
 using PizzaBox.Client.Models;
+using PizzaBox.Storing;
 
 namespace PizzaBox.Client.Controllers
 {
-  [Route("[controller]")]
+
   public class OrderController : Controller
   {
+    public readonly UnitOfWork _unitOfWork;
+
+    public OrderController(UnitOfWork unitOfWork)
+    {
+      _unitOfWork = unitOfWork;
+    }
     [HttpGet]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public string Create(OrderViewModel order)
+    public IActionResult Create(OrderViewModel order)
     {
       if (ModelState.IsValid)
       {
-      return "good request";
+      return View("Checkout"); //change this later 
       } 
-      return "bad request";
+      order.Load(_unitOfWork);
+      return View("Order", order); //data binding
     }
-/*     public string SelectedSize(OrderViewModel order) //do I need this?
-    {
-      if (ModelState.IsValid)
-      {
-      return order.SelectedSize;
-      }
-      return "no"; 
-    }*/
   }
 } 

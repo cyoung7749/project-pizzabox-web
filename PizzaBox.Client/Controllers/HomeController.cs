@@ -11,7 +11,7 @@ using PizzaBox.Storing;
 
 namespace PizzaBox.Client.Controllers
 {
-  //[Route("[controller]")]
+
   public class HomeController : Controller 
   {
     private readonly UnitOfWork _unitOfWork = new UnitOfWork();
@@ -34,12 +34,26 @@ namespace PizzaBox.Client.Controllers
     {
       //ViewBag.Order = new OrderViewModel();
       //return View("Index", new OrderViewModel()); //specify which view you want, cause this is just lucky that we found a "view"
-      var view = View("Index", new OrderViewModel((_unitOfWork))); //add topping
+      var view = View("Index"); //add topping
       return view;
     }
     public IActionResult Privacy()
     {
       return View();
+    }
+    [HttpGet]
+    public IActionResult Store()
+    {
+      var order = new OrderViewModel();
+      order.Load(_unitOfWork);
+      return View("Store", order);  //take out the OrderViewModel
+    }
+    public IActionResult Order()
+    {
+      var order = new OrderViewModel();
+      order.Load(_unitOfWork);
+      return View("Order", order);
+      //same thing from order controller
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

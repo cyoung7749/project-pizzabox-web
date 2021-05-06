@@ -25,7 +25,7 @@ namespace PizzaBox.Client
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddControllersWithViews();
-      services.AddScoped<UnitOfWork>();
+      services.AddScoped<UnitOfWork>(); //scoped, transient, singleton
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +47,7 @@ namespace PizzaBox.Client
       app.UseRouting();
 
       app.UseAuthorization();
-
+      
       app.UseEndpoints(endpoints =>
       {
           endpoints.MapControllerRoute(
