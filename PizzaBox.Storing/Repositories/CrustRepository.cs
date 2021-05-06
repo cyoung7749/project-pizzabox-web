@@ -3,25 +3,25 @@ using PizzaBox.Domain.Interfaces;
 using PizzaBox.Domain.Models;
 
 
-namespace PizzaBox.Domain.Repositories
+namespace PizzaBox.Storing.Repositories
 {
   public class CrustRepository: IRepository<Crust>
   {
     public IEnumerable<Crust> Create()
     {
-            throw new System.NotImplementedException();
+        return new List<Crust> { new Crust(), new Crust() };
     } //Select
     public bool Update()
     {
-            throw new System.NotImplementedException();
+        throw new System.NotImplementedException();
     } //Insert
     public Crust Read()
     {
-            throw new System.NotImplementedException();
+        throw new System.NotImplementedException();
     } //Update
     public bool Delete()
     {
-            throw new System.NotImplementedException();
+        throw new System.NotImplementedException();
     }
   }
 }

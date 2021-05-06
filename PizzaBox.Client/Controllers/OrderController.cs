@@ -13,9 +13,9 @@ namespace PizzaBox.Client.Controllers
     {
       if (ModelState.IsValid)
       {
-      return order.SelectedCrust;
+      return "good request";
       } 
-      return "no";
+      return "bad request";
     }
 /*     public string SelectedSize(OrderViewModel order) //do I need this?
     {

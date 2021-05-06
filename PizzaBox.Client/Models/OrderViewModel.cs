@@ -2,18 +2,18 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using PizzaBox.Domain.Models;
-using PizzaBox.Storage;
-using PizzaBox.Storage.Repositories;
+using PizzaBox.Storing;
+using PizzaBox.Storing.Repositories;
 
 namespace PizzaBox.Client.Models
 {
-    public class OrderViewModel
+    public class OrderViewModel : IValidatableObject
     {
         public List<string> Crusts { get; set; }
-        // = new List<string> { "Original", "Stuffed Crust", "Pretzel" };
         public List<string> Sizes { get; set; }
-        // = new List<string> {"Small", "Medium","Large"};
         public List<string> Toppings { get; set; }
+        // = new List<string> { "Original", "Stuffed Crust", "Pretzel" };
+        // = new List<string> {"Small", "Medium","Large"};
         // = new List<string> {"Nara", "Mozz", "Basil", "Pep", "Saus"};
         
         [Required(ErrorMessage = "* SELEC UR CRUST")] // if selectedcrust is null
@@ -25,32 +25,19 @@ namespace PizzaBox.Client.Models
         public string SelectedSize { get; set; }
         
         [Required(ErrorMessage = "* SELEC UR TOPS")]
-        //[Range(2,5)]
         public List<string> SelectedToppings { get; set; }
 
-        public OrderViewModel(CrustRepository crustRepo, SizeRepository sizeRepo)
+        public OrderViewModel(UnitOfWork unitOfWork)
         {
-            Crusts = UnitOfWork.Crusts.Create().ToList();
-            Sizes = UnitOfWork.Sizes.Create().ToList();
-            //Toppings = toppingRepo.Create().ToList();
+            Crusts = unitOfWork.Crusts.Create().ToList();
+            Sizes = unitOfWork.Sizes.Create().ToList();
+            Toppings = unitOfWork.Toppings.Create().ToList();
         }
-        public IEnumerable<ValidationResult> Validate(ValidationResult validationContext)
-        {
-            //var validresults = new List<ValidationResult>();
-            if (SelectedCrust == SelectedSize)
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
             {
-/*          validresults.Add(new ValidationResult("crust goes on the outside, size ain't it chief",
-                new string[] { "SelectedCrust", "SelectedSize"})); */
-            // ^ always creates a list for validation
-                yield return new ValidationResult("u wot");
-            // this is the "lazy" method cause it only generates if the validation happens
-            }
-            /* yield return new ValidationResult("crust goes on the outside, size ain't it chief",
-                new string[] { "SelectedCrust", "SelectedSize"}); */
-
             if (SelectedToppings.Count < 2 || SelectedToppings.Count > 5)
             {
-                yield return new ValidationResult("no good topping count");
+            yield return new ValidationResult("no good toppings, try ", new[] { "SelectedToppings" });
             }
         }
     }

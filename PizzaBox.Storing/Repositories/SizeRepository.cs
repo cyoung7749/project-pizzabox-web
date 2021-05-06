@@ -3,13 +3,13 @@ using PizzaBox.Domain.Interfaces;
 using PizzaBox.Domain.Models;
 
 
-namespace PizzaBox.Domain.Repositories
+namespace PizzaBox.Storing.Repositories
 {
   public class SizeRepository: IRepository<Size>
   {
     public IEnumerable<Size> Create()
     {
-            throw new System.NotImplementedException();
+        return new List<Size> { new Size(), new Size() };
     } //Select
     public bool Update()
     {

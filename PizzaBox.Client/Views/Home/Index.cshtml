@@ -6,13 +6,6 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
-@* <ul>
-    @foreach (var item in ViewBag.Order.Crusts)
-    {
-    <li>@item</li>
-    }
-    </ul> *@
-
 @* TAG HELPER ???*@
 @* <form asp-controller="order" method="post">
     <legend>CRUSS</legend>
@@ -36,30 +29,37 @@
 <body>
     @Html.AntiForgeryToken()
     <form action="/order" method="post" novalidate="novalidate">
-        <legend>CRUSS</legend>
-        @foreach (var item in Model.Sizes)
-        {
-            <input type="radio" id="@item" name="selectedcrust" value="@item">
-            <label for="@item">@item</label>
+        <fieldset>
+            <legend>CRUSS</legend>
             @Html.ValidationMessageFor(m => m.SelectedSize)
-            <br>
-        }
-        <legend>SIEZ</legend>
-        @foreach (var item in Model.Crusts)
-        {
-            <input type="radio" id="@item" name="selectedsize" value="@item">
-            <label for="@item">@item</label>
+            @foreach (var item in Model.Sizes)
+            {
+                <input type="radio" id="@item" name="selectedcrust" value="@item">
+                <label for="@item">@item</label>
+                <br>
+            }
+        </fieldset>
+        <fieldset>
+            <legend>SIEZ</legend>
             @Html.ValidationMessageFor(m => m.SelectedCrust)
-            <br>
-        }
-        <legend>TOPPERS</legend>
-        @foreach (var item in Model.Toppings)
-        {
-            <input type="checkbox" id="@item" name="selectedtopping" value="@item">
-            <label for="@item">@item</label>
+            @foreach (var item in Model.Crusts)
+            {
+                <input type="radio" id="@item" name="selectedsize" value="@item">
+                <label for="@item">@item</label>
+                <br>
+            }
+        </fieldset>
+        <fieldset>
+            <legend>TOPPERS</legend>
             @Html.ValidationMessageFor(m => m.SelectedToppings)
-            <br>
-        }
+            @foreach (var item in Model.Toppings)
+            {
+                <input type="checkbox" id="@item" name="selectedtopping" value="@item">
+                <label for="@item">@item</label>
+                <br>
+            }
+        </fieldset>
+
         <button type="submit">SUMBIT ORDERR</button>
     </form>
 </body>

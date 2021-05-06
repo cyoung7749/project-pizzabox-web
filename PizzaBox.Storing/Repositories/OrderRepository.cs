@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using PizzaBox.Domain.Interfaces;
 using PizzaBox.Domain.Models;
 
-namespace PizzaBox.Storage.Repositories
+namespace PizzaBox.Storing.Repositories
 {
   public class OrderRepository : IRepository<Order>
   {
