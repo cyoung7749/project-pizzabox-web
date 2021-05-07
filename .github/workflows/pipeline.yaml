@@ -9,7 +9,7 @@ jobs:
 
     # test: xunit
     #analyze: sonarcloud
-sonarcloud:
+  sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
