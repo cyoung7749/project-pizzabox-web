@@ -12,30 +12,21 @@ using PizzaBox.Storing;
 namespace PizzaBox.Client.Controllers
 {
 
-  public class HomeController : Controller 
+  public class HomeController : Controller
   {
-    private readonly UnitOfWork _unitOfWork = new UnitOfWork();
-    
+    private readonly UnitOfWork _unitOfWork;
+
     public HomeController(UnitOfWork unitOfWork)
     {
       _unitOfWork = unitOfWork;
     }
-
-/*   private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
-    {
-      _logger = logger;
-    }     */
-
     //If I wanted to use DIP, I'd have to do _unitOfWork = UnitOfWork;
     [HttpGet]
     public IActionResult Index()
     {
-      //ViewBag.Order = new OrderViewModel();
-      //return View("Index", new OrderViewModel()); //specify which view you want, cause this is just lucky that we found a "view"
-      var view = View("Index"); //add topping
-      return view;
+/*       var order = new OrderViewModel();
+      order.Load(_unitOfWork);*/
+      return View("Index"); 
     }
     public IActionResult Privacy()
     {
@@ -52,7 +43,7 @@ namespace PizzaBox.Client.Controllers
     {
       var order = new OrderViewModel();
       order.Load(_unitOfWork);
-      return View("Order", order);
+      return View("order", order);
       //same thing from order controller
     }
 

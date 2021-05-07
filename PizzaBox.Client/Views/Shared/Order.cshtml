@@ -10,8 +10,8 @@
 @model PizzaBox.Client.Models.OrderViewModel
 
 <body>
+  <form action="/order" method="post">
   @Html.AntiForgeryToken()
-  <form action="/order" method="post" novalidate="novalidate">
     <fieldset>
       <legend>CRUSS</legend>
       @Html.ValidationMessageFor(m => m.SelectedSize)
