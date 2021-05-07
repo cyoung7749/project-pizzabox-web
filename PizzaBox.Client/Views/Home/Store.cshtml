@@ -9,21 +9,34 @@
 @model PizzaBox.Client.Models.OrderViewModel
 
 @* TAG HELPER *@
-<form asp-controller="order" method="post">
-  <legend>CRUSS</legend>
+<form asp-controller="Order" asp-action="order" method="post">
+  <legend>CRUSS</legend>@Html.ValidationMessageFor(m => m.SelectedSize)
   @foreach (var item in Model.Sizes)
   {
-    <input type="radio" id="@item" asp-for="@Model.SelectedSize" value="@item">
-    <label asp-for="@item">@item</label>
-    @Html.ValidationMessageFor(m => m.SelectedSize)
+    <div class="form-check">
+      <input class="form-check-input" id="@item" type="radio" asp-for="SelectedCrust" value="@item">
+      <label class="form-check-label" for="@item">@item</label>
+    </div>
   }<br>
-</form>
-<form asp-controller="order" method="post">
-  <legend>SIEZ</legend>
+
+  <legend>SIEZ</legend> @Html.ValidationMessageFor(m => m.SelectedCrust)
   @foreach (var item in Model.Crusts)
   {
-    <input type="radio" id="@item" asp-for="@Model.SelectedCrust" value="@item">
-    <label asp-for="@item">@item</label>
-    @Html.ValidationMessageFor(m => m.SelectedCrust)
+    <div class="form-check">
+      <input class="form-check-input" id="@item" type="radio" asp-for="SelectedSize" value="@item">
+      <label class="form-check-label" for="@item">@item</label>
+    </div>
   }<br>
+  <legend>TOPPIN</legend>
+  @Html.ValidationMessageFor(m => m.SelectedToppings)
+
+  @foreach (var item in Model.Toppings)
+  {
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="@item" name="selectedtoppings" value="@item">
+      <label class="form-check-label" for="@item">@item</label>
+    </div>
+  }
+  </fieldset>
+  <button type="submit">make pizza</button>
 </form>

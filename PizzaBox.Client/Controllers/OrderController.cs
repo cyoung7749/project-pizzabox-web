@@ -8,7 +8,7 @@ using PizzaBox.Storing;
 
 namespace PizzaBox.Client.Controllers
 {
-  //[Route("[controller]")]
+  [Route("[controller]/order")]
   public class OrderController : Controller
   {
     public readonly UnitOfWork _unitOfWork;
@@ -24,10 +24,10 @@ namespace PizzaBox.Client.Controllers
     {
       if (ModelState.IsValid)
       {
-      return View("Checkout"); //change this later 
-      } 
+        return View("Checkout"); //change this later 
+      }
       order.Load(_unitOfWork);
       return View("Order", order); //data binding
     }
   }
-} 
+}

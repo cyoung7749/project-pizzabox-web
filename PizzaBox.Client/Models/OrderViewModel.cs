@@ -38,7 +38,7 @@ namespace PizzaBox.Client.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
             {
-            if (SelectedToppings.Count < 2 || SelectedToppings.Count > 5)
+            if (SelectedToppings.Count() < 2 || SelectedToppings.Count() > 5)
             {
             yield return new ValidationResult("no good toppings, try ", new[] { "SelectedToppings" });
             }

@@ -11,7 +11,6 @@ using PizzaBox.Storing;
 
 namespace PizzaBox.Client.Controllers
 {
-
   public class HomeController : Controller
   {
     private readonly UnitOfWork _unitOfWork;
@@ -24,9 +23,9 @@ namespace PizzaBox.Client.Controllers
     [HttpGet]
     public IActionResult Index()
     {
-/*       var order = new OrderViewModel();
-      order.Load(_unitOfWork);*/
-      return View("Index"); 
+      /*       var order = new OrderViewModel();
+            order.Load(_unitOfWork);*/
+      return View("Index");
     }
     public IActionResult Privacy()
     {
