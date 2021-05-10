@@ -16,8 +16,8 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
           args: >
-            -Dsonar.organization=my-organization
-            -Dsonar.projectKey=my-projectkey
+            -Dsonar.organization=cyoung7749
+            -Dsonar.projectKey=cyoung7749_project-pizzabox-web
             -Dsonar.python.coverage.reportPaths=coverage.xml
             -Dsonar.sources=lib/
             -Dsonar.test.exclusions=tests/**
