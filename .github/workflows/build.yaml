@@ -18,11 +18,6 @@ jobs:
           args: >
             -Dsonar.organization=cyoung7749
             -Dsonar.projectKey=cyoung7749_project-pizzabox-web
-            -Dsonar.python.coverage.reportPaths=coverage.xml
-            -Dsonar.sources=lib/
-            -Dsonar.test.exclusions=tests/**
-            -Dsonar.tests=tests/
-            -Dsonar.verbose=true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
