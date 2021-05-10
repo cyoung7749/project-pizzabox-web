@@ -1,32 +1,30 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using PizzaBox.Domain.Interfaces;
 using PizzaBox.Domain.Models;
 
-
 namespace PizzaBox.Storing.Repositories
 {
-  public class SizeRepository : IRepository<Size>
+  public class PizzaRepository : IRepository<Pizza>
   {
     private readonly PizzaBoxContext _context;
-    public SizeRepository(PizzaBoxContext context)
+
+    public PizzaRepository(PizzaBoxContext context)
     {
       _context = context;
     }
-    public IEnumerable<Size> Create(Func<Size, bool> filter)
-    {
-      return _context.Sizes.Where(filter);
-      //return new List<Size> { new Size(), new Size() };
-    } //Select
-    public bool Update(Size entry)
+    public IEnumerable<Pizza> Create(Func<Pizza, bool> filter)
     {
       throw new System.NotImplementedException();
-    } //Insert
-    public Size Read()
+    }
+    public Pizza Read()
     {
       throw new System.NotImplementedException();
-    } //Update
+    }
+    public bool Update(Pizza entry)
+    {
+      throw new System.NotImplementedException();
+    }
     public bool Delete()
     {
       throw new System.NotImplementedException();

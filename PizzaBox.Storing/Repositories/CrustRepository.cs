@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using PizzaBox.Domain.Interfaces;
 using PizzaBox.Domain.Models;
 
@@ -12,19 +14,19 @@ namespace PizzaBox.Storing.Repositories
     {
       _context = context;
     }
-    public IEnumerable<Crust> Create()
+    public IEnumerable<Crust> Create(Func<Crust, bool> filter)//Select
     {
-      return _context.Crusts;
+      return _context.Crusts.Where(filter);
       //return new List<Crust> { new Crust(), new Crust() };
-    } //Select
-    public bool Update()
+    }
+    public bool Update(Crust entry)//Insert
     {
       throw new System.NotImplementedException();
-    } //Insert
-    public Crust Read()
+    }
+    public Crust Read()//Update
     {
       throw new System.NotImplementedException();
-    } //Update
+    }
     public bool Delete()
     {
       throw new System.NotImplementedException();

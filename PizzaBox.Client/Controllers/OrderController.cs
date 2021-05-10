@@ -24,7 +24,21 @@ namespace PizzaBox.Client.Controllers
     {
       if (ModelState.IsValid)
       {
-        return View("Checkout"); //change this later 
+        var crust = _unitOfWork.Crusts.Create(c => c.Name == order.SelectedCrust).First();
+        var size = _unitOfWork.Sizes.Create(s => s.Name == order.SelectedSize).First();
+        var toppings = new List<Topping>();
+
+        foreach (var item in order.SelectedToppings)
+        {
+          toppings.Add(_unitOfWork.Toppings.Create(t => t.Name == item).First());
+        }
+
+        var newPizza = new Pizza { Crust = crust, Size = size, Toppings = toppings };
+        var newOrder = new Order { Pizzas = new List<Pizza> { newPizza } };
+
+        _unitOfWork.Orders.Update(newOrder);
+        _unitOfWork.Save();
+        return View("PreCheckout"); //change this later 
       }
       order.Load(_unitOfWork);
       return View("Order", order); //data binding

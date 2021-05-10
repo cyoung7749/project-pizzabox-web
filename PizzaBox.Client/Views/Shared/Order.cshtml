@@ -16,7 +16,7 @@
   {
     <div class="form-check">
       <input class="form-check-input" id="@item" type="radio" asp-for="SelectedCrust" value="@item">
-      <label class="form-check-label" for="@item">@item</label>
+      <label class="form-check-label" for="@item">@item: $@item.Price</label>
     </div>
   }<br>
 
@@ -25,7 +25,7 @@
   {
     <div class="form-check">
       <input class="form-check-input" id="@item" type="radio" asp-for="SelectedSize" value="@item">
-      <label class="form-check-label" for="@item">@item</label>
+      <label class="form-check-label" for="@item">@item: $@item.Price</label>
     </div>
   }<br>
   <legend>TOPPIN</legend>
@@ -35,7 +35,7 @@
   {
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="@item" name="selectedtoppings" value="@item">
-      <label class="form-check-label" for="@item">@item</label>
+      <label class="form-check-label" for="@item">@item: $@item.Price</label>
     </div>
   }
   </fieldset>

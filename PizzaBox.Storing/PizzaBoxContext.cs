@@ -10,7 +10,8 @@ namespace PizzaBox.Storing
     public DbSet<Crust> Crusts { get; set; }
     public DbSet<Size> Sizes { get; set; }
     public DbSet<Topping> Toppings { get; set; }
-
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<Pizza> Pizzas { get; set; }
     public PizzaBoxContext(DbContextOptions options) : base(options)
     {
 
@@ -20,6 +21,9 @@ namespace PizzaBox.Storing
       builder.Entity<Crust>().HasKey(e => e.EntityId);
       builder.Entity<Size>().HasKey(e => e.EntityId);
       builder.Entity<Topping>().HasKey(e => e.EntityId);
+      builder.Entity<Pizza>().HasKey(e => e.EntityId);
+      //
+      builder.Entity<Order>().HasKey(e => e.EntityId);
 
       OnDataSeeding(builder);
     }
@@ -46,7 +50,8 @@ namespace PizzaBox.Storing
               new Topping() { EntityId = 5, Name = "Sausage", Price = 3.00M},
               new Topping() { EntityId = 6, Name = "Parmesan", Price = 1.00M},
               new Topping() { EntityId = 7, Name = "Fresh Mozzarella", Price = 2.00M},
-              new Topping() { EntityId = 8, Name = "Mushrooms", Price = 2.00M}
+              new Topping() { EntityId = 8, Name = "Mushrooms", Price = 2.00M},
+              new Topping() { EntityId = 9, Name = "Chili Flakes", Price = 0.25M }
       });
     }
   }
