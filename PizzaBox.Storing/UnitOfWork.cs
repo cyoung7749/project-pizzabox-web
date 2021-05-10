@@ -18,8 +18,7 @@ namespace PizzaBox.Storing
       Toppings = new ToppingRepository(_context);
       Orders = new OrderRepository(_context);
       Pizzas = new PizzaRepository(_context);
-      //
-      // do the same for toppings 
+
     }
     public void Save()
     {

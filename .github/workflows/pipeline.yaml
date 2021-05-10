@@ -6,7 +6,11 @@ jobs:
       steps:
           - uses: actions/checkout@v2
           - run: dotnet build 
-
+    test:
+        runs-on: ubuntu-20.04
+        steps: 
+            - uses: actions/checkout@v2
+            - run: dotnet test
     # test: xunit
     #analyze: sonarcloud
     # package: 

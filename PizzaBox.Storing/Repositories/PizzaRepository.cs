@@ -8,7 +8,6 @@ namespace PizzaBox.Storing.Repositories
   public class PizzaRepository : IRepository<Pizza>
   {
     private readonly PizzaBoxContext _context;
-
     public PizzaRepository(PizzaBoxContext context)
     {
       _context = context;

@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using PizzaBox.Client.Models;
 using PizzaBox.Domain.Models;
 using PizzaBox.Storing;
+using PizzaBox.Storing.Repositories;
 
 
 namespace PizzaBox.Client.Controllers
@@ -38,7 +40,8 @@ namespace PizzaBox.Client.Controllers
 
         _unitOfWork.Orders.Update(newOrder);
         _unitOfWork.Save();
-        return View("PreCheckout"); //change this later 
+        ViewBag.Order = newOrder;
+        return View("Checkout"); //change this later 
       }
       order.Load(_unitOfWork);
       return View("Order", order); //data binding

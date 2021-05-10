@@ -12,9 +12,6 @@ namespace PizzaBox.Client.Models
     public List<Crust> Crusts { get; set; }
     public List<Size> Sizes { get; set; }
     public List<Topping> Toppings { get; set; }
-    // = new List<string> { "Original", "Stuffed Crust", "Pretzel" };
-    // = new List<string> {"Small", "Medium","Large"};
-    // = new List<string> {"Nara", "Mozz", "Basil", "Pep", "Saus"};
 
     [Required(ErrorMessage = "* SELEC UR CRUST")] // if selectedcrust is null
     [DataType(DataType.Text)]
@@ -38,9 +35,9 @@ namespace PizzaBox.Client.Models
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
-      if (SelectedToppings.Count() < 2 || SelectedToppings.Count() > 5)
+      if (SelectedToppings.Count < 2 || SelectedToppings.Count > 5)
       {
-        yield return new ValidationResult("no good toppings, try ", new[] { "SelectedToppings" });
+        yield return new ValidationResult("no good toppings, try: ", new[] { "SelectedToppings" });
       }
     }
   }
