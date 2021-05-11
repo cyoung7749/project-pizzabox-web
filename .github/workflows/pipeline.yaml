@@ -9,8 +9,8 @@ jobs:
     test:
         runs-on: ubuntu-20.04
         steps: 
-            - uses: actions/checkout@v2
-            - run: dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:CoverletOutput=./test_coverage/ -l trx -r ./test_result/
+          - uses: actions/checkout@v2
+          - run: dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:CoverletOutput=./test_coverage/ -l trx -r ./test_result/
     sonarcloud:
         runs-on: ubuntu-20.04
         needs:
@@ -19,17 +19,17 @@ jobs:
         steps:
         - uses: actions/checkout@v2
         - name: SonarCloud Scan
-            uses: sonarsource/sonarcloud-github-action@master
-            with:
-                projectBaseDir: /project-pizzabox-web
-                args: >
-                    -Dsonar.organization=cyoung7749
-                    -Dsonar.projectKey=cyoung7749_project-pizzabox-web
-                    -Dsonar.cs.opencover.reportsPaths
-                    -Dsonar.sources=lib/
-                    -Dsonar.test.exclusions=tests/**
-                    -Dsonar.tests=tests/
-                    -Dsonar.verbose=true
+          uses: sonarsource/sonarcloud-github-action@master
+          with:
+              projectBaseDir: /project-pizzabox-web
+              args: >
+                -Dsonar.organization=cyoung7749
+                -Dsonar.projectKey=cyoung7749_project-pizzabox-web
+                -Dsonar.cs.opencover.reportsPaths
+                -Dsonar.sources=lib/
+                -Dsonar.test.exclusions=tests/**
+                -Dsonar.tests=tests/
+                -Dsonar.verbose=true
             env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -41,12 +41,12 @@ jobs:
             - sonarcloud
         runs-on: ubuntu-20.04
         steps: 
-            - uses: actions/checkout@v2
-            - run: echo $DOCKER_TOKEN | docker login -u $DOCKER_USER --password-stdin
-            - run: docker image build -f Dockerfile -t cyoung7749dh/pizzabox . 
-            - run: docker image tag pizzabox cyoung7749dh/pizzabox
-            - run: docker push cyoung7749dh/pizzabox
-            - run: docker logout
+          - uses: actions/checkout@v2
+          - run: echo $DOCKER_TOKEN | docker login -u $DOCKER_USER --password-stdin
+          - run: docker image build -f Dockerfile -t cyoung7749dh/pizzabox . 
+          - run: docker image tag pizzabox cyoung7749dh/pizzabox
+          - run: docker push cyoung7749dh/pizzabox
+          - run: docker logout
 
 on: 
     push:
