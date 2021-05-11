@@ -12,20 +12,17 @@ jobs:
             - uses: actions/checkout@v2
             - run: dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:CoverletOutput=./test_coverage/ -l trx -r ./test_result/
     sonarcloud:
-        name: SonarCloud
-        runs-on: ubuntu-20.04
-        needs:
-            - build
-            - test
+        runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v2
-            with:
-                fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-        - name: Analyze with SonarCloud
-            uses: SonarSource/sonarcloud-github-action@master
-            env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+            # Disabling shallow clone is recommended for improving relevancy of reporting
+            fetch-depth: 0
+        - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     package:
         env:
             DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
@@ -40,7 +37,7 @@ jobs:
             - run: docker image tag pizzabox cyoung7749dh/pizzabox
             - run: docker push cyoung7749dh/pizzabox
             - run: docker logout
-            
+
 on: 
     push:
         branches:
