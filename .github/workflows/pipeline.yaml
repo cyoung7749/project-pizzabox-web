@@ -4,15 +4,44 @@ jobs:
     build: 
       runs-on: ubuntu-20.04
       steps:
-          - uses: actions/checkout@v2
-          - run: dotnet build 
+            - uses: actions/checkout@v2
+            - run: dotnet build 
     test:
         runs-on: ubuntu-20.04
         steps: 
             - uses: actions/checkout@v2
-            - run: dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover
-    # test: xunit
-    #analyze: sonarcloud
-    # package: 
-
-on: push
+            - run: dotnet test -p:CollectCoverage=true -p:CoverletOutputFormat=opencover -p:CoverletOutput=./test_coverage/ -l trx -r ./test_result/
+    sonarcloud:
+        name: SonarCloud
+        runs-on: ubuntu-20.04
+        needs:
+            - build
+            - test
+        steps:
+        - uses: actions/checkout@v2
+            with:
+                fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+        - name: Analyze with SonarCloud
+            uses: SonarSource/sonarcloud-github-action@master
+            env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    package:
+        env:
+            DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+            DOCKER_USER: ${{ secrets.DOCKER_USER}}
+        needs:
+            - sonarcloud
+        runs-on: ubuntu-20.04
+        steps: 
+            - uses: actions/checkout@v2
+            - run: echo $DOCKER_TOKEN | docker login -u $DOCKER_USER --password-stdin
+            - run: docker image build -f Dockerfile -t cyoung7749dh/pizzabox . 
+            - run: docker image tag pizzabox cyoung7749dh/pizzabox
+            - run: docker push cyoung7749dh/pizzabox
+            - run: docker logout
+            
+on: 
+    push:
+        branches:
+            - client-branch

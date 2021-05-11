@@ -12,6 +12,7 @@ namespace PizzaBox.Storing
     public DbSet<Topping> Toppings { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<Pizza> Pizzas { get; set; }
+    public DbSet<Customer> Customers { get; set; }
     public PizzaBoxContext(DbContextOptions options) : base(options)
     {
 
@@ -24,7 +25,7 @@ namespace PizzaBox.Storing
       builder.Entity<Pizza>().HasKey(e => e.EntityId);
       //
       builder.Entity<Order>().HasKey(e => e.EntityId);
-
+      builder.Entity<Customer>().HasKey(e => e.EntityId);
       OnDataSeeding(builder);
     }
     private void OnDataSeeding(ModelBuilder builder)

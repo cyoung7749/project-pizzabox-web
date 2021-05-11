@@ -12,7 +12,7 @@
 @* TAG HELPER *@
 <form asp-controller="Order" asp-action="order" method="post">
   <legend>CRUSS</legend>@Html.ValidationMessageFor(m => m.SelectedSize)
-  @foreach (var item in Model.Sizes)
+  @foreach (var item in Model.Crusts)
   {
     <div class="form-check">
       <input class="form-check-input" id="@item" type="radio" asp-for="SelectedCrust" value="@item">
@@ -21,7 +21,7 @@
   }<br>
 
   <legend>SIEZ</legend> @Html.ValidationMessageFor(m => m.SelectedCrust)
-  @foreach (var item in Model.Crusts)
+  @foreach (var item in Model.Sizes)
   {
     <div class="form-check">
       <input class="form-check-input" id="@item" type="radio" asp-for="SelectedSize" value="@item">

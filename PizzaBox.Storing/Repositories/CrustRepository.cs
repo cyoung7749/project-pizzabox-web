@@ -17,7 +17,6 @@ namespace PizzaBox.Storing.Repositories
     public IEnumerable<Crust> Create(Func<Crust, bool> filter)//Select
     {
       return _context.Crusts.Where(filter);
-      //return new List<Crust> { new Crust(), new Crust() };
     }
     public bool Update(Crust entry)//Insert
     {
