@@ -21,7 +21,7 @@ jobs:
         - name: SonarCloud Scan
           uses: sonarsource/sonarcloud-github-action@master
           with:
-              projectBaseDir: /project-pizzabox-web
+              #projectBaseDir: /project-pizzabox-web
               args: >
                 -Dsonar.organization=cyoung7749
                 -Dsonar.projectKey=cyoung7749_project-pizzabox-web
