@@ -34,10 +34,19 @@
   @foreach (var item in Model.Toppings)
   {
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="@item" name="Selectedtoppings" value="@item">
+      <input class="form-check-input" type="checkbox" id="@item" name="SelectedToppings" value="@item">
       <label class="form-check-label" for="@item">@item</label>: $@item.Price
     </div>
   }
-  </fieldset>
+  <legend>WHO DIS</legend>
+  @Html.ValidationMessageFor(m => m.SelectedCustomer)
+  @foreach (var item in Model.Customers)
+  {
+    <div class="form-check">
+      <input class="form-check-input" id="@item" type="radio" asp-for="SelectedCustomer" value="@item">
+      <label class="form-check-label" for="@item">@item</label>:
+    </div>
+  }
+  </div>
   <button type="submit">make pizza</button>
 </form>

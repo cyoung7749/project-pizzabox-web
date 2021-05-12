@@ -2,7 +2,7 @@
   ViewData["Title"] = "Checkout Page";
 }
 
-<h2>Current Pizza Order</h2>
+<h2>Order Received</h2>
 @foreach (var item in ViewBag.Order.Pizzas)
 {
   <p>Crust: @item.Crust</p>
@@ -18,12 +18,8 @@
 
 }
 <div>Total Cost: $ @ViewBag.Total</div>
-@model PizzaBox.Client.Models.CustomerViewModel
-<form asp-controller="Customer" asp-action="order" method="post">
 
-  <select asp-for="Customers" asp-items="@(new SelectList(Model.Customers))">
-
-  </select>
-
+<form>
+  <button asp-controller="Home" asp-action="Index">Return home</button>
 
 </form>

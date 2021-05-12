@@ -8,7 +8,7 @@ using PizzaBox.Storing;
 
 namespace PizzaBox.Client.Controllers
 {
-  [Route("[controller]/order")]
+  [Route("[controller]/Order")]
   public class OrderController : Controller
   {
     public readonly UnitOfWork _unitOfWork;
@@ -31,25 +31,22 @@ namespace PizzaBox.Client.Controllers
         {
           toppings.Add(_unitOfWork.Toppings.Create(t => t.Name == item).First());
         }
+        var customer = _unitOfWork.Customers.Create(s => s.Name == order.SelectedCustomer).First();
 
         var newPizza = new Pizza { Crust = crust, Size = size, Toppings = toppings };
-        var newOrder = new Order { Pizzas = new List<Pizza> { newPizza } };
+        var newOrder = new Order { Pizzas = new List<Pizza> { newPizza }, Customers = customer };
 
-        //no longer _unitOfWork.Save();
         var TTotal = toppings.Sum(x => x.Price);
         var PizzaCost = newPizza.Crust.Price + newPizza.Size.Price + TTotal;
         ViewBag.Total = PizzaCost;
 
         _unitOfWork.Orders.Update(newOrder);
+        _unitOfWork.Save();
         ViewBag.Order = newOrder;
-        return RedirectToAction("Home/Customer"); //change this later 
+        return View("Checkout"); //change this later 
       }
       order.Load(_unitOfWork);
       return View("Order", order); //data binding
     }
-    //public IActionResult Customer() in HOME
-    //{
-    //  return View("Checkout");
-    //}
   }
 }
