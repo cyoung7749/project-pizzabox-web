@@ -30,6 +30,11 @@ namespace PizzaBox.Storing
     }
     private void OnDataSeeding(ModelBuilder builder)
     {
+      builder.Entity<Customer>().HasData(new Customer[]
+      {
+        new Customer() { EntityId = 1, Name = "Mario Pardi" },
+        new Customer() { EntityId = 2, Name = "Mario Kart" }
+      });
       builder.Entity<Crust>().HasData(new[]
      {
               new Crust() { EntityId = 1, Name = "Thin", Price = 2.00M},

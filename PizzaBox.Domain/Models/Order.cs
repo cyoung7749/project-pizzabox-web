@@ -6,6 +6,6 @@ namespace PizzaBox.Domain.Models
   public class Order : Entity
   {
     public List<Pizza> Pizzas { get; set; }
-    public Customer Customers { get; set; }
+    //public Customer Customers { get; set; }
   }
 }
