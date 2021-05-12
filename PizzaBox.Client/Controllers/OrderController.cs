@@ -42,10 +42,14 @@ namespace PizzaBox.Client.Controllers
 
         _unitOfWork.Orders.Update(newOrder);
         ViewBag.Order = newOrder;
-        return RedirectToAction("Customer"); //change this later 
+        return RedirectToAction("Home/Customer"); //change this later 
       }
       order.Load(_unitOfWork);
       return View("Order", order); //data binding
     }
+    //public IActionResult Customer() in HOME
+    //{
+    //  return View("Checkout");
+    //}
   }
 }
