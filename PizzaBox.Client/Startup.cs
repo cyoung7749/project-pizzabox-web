@@ -37,13 +37,13 @@ namespace PizzaBox.Client
             opts.EnableRetryOnFailure(3);
           });
         }
-        else
-        {
-          options.UseNpgsql(Configuration.GetConnectionString("pgsql"), opts =>
-          {
-            opts.EnableRetryOnFailure(3);
-          });
-        }
+        /*         else
+                {
+                  options.UseNpgsql(Configuration.GetConnectionString("pgsql"), opts =>
+                  {
+                    opts.EnableRetryOnFailure(3);
+                  });
+                } */
       });
     }
 
