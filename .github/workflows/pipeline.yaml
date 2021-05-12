@@ -33,7 +33,7 @@ jobs:
         steps: 
           - uses: actions/checkout@v2
           - run: echo $DOCKER_TOKEN | docker login -u $DOCKER_USER --password-stdin
-          - run: docker image build -f PIzzaBox.Client/Dockerfile -t cyoung7749/pizzabox . 
+          - run: docker image build -f PizzaBox.Client/Dockerfile -t cyoung7749/pizzabox . 
           - run: docker image tag pizzabox cyoung7749/pizzabox
           - run: docker push cyoung7749/pizzabox
           - run: docker logout
