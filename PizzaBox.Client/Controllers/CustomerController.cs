@@ -8,7 +8,7 @@ using PizzaBox.Storing;
 
 namespace PizzaBox.Client.Controllers
 {
-  [Route("[controller]/customer")]
+  [Route("[controller]")]
   public class CustomerController : Controller
   {
     public readonly UnitOfWork _unitOfWork;
