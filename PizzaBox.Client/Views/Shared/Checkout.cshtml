@@ -19,7 +19,7 @@
 }
 <div>Total Cost: $ @ViewBag.Total</div>
 @model PizzaBox.Client.Models.CustomerViewModel
-<form asp-controller="Home" asp-action="customer" method="post">
+<form asp-controller="Customer" asp-action="order" method="post">
 
   <select asp-for="Customers" asp-items="@(new SelectList(Model.Customers))">
 
