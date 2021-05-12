@@ -37,7 +37,18 @@ jobs:
           - run: docker image tag pizzabox cyoung7749/pizzabox
           - run: docker push cyoung7749/pizzabox
           - run: docker logout
-
+    deploy:
+        needs:
+            - package
+        runs-on: ubuntu-20.04
+        steps:
+        - uses: azure/login@v1
+            with:
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
+        - uses: azure/webapps-deploy@v2
+            with:
+            app-name: pizzaboxdemo
+            images: cyoung7749/pizzabox
 on: 
     push:
         branches:
