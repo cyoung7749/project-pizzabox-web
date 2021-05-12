@@ -27,7 +27,6 @@ namespace PizzaBox.Client.Controllers
         var crust = _unitOfWork.Crusts.Create(c => c.Name == order.SelectedCrust).First();
         var size = _unitOfWork.Sizes.Create(s => s.Name == order.SelectedSize).First();
         var toppings = new List<Topping>();
-
         foreach (var item in order.SelectedToppings)
         {
           toppings.Add(_unitOfWork.Toppings.Create(t => t.Name == item).First());
@@ -36,8 +35,12 @@ namespace PizzaBox.Client.Controllers
         var newPizza = new Pizza { Crust = crust, Size = size, Toppings = toppings };
         var newOrder = new Order { Pizzas = new List<Pizza> { newPizza } };
 
+        //no longer _unitOfWork.Save();
+        var TTotal = toppings.Sum(x => x.Price);
+        var PizzaCost = newPizza.Crust.Price + newPizza.Size.Price + TTotal;
+        ViewBag.Total = PizzaCost;
+
         _unitOfWork.Orders.Update(newOrder);
-        _unitOfWork.Save();
         ViewBag.Order = newOrder;
         return View("Checkout"); //change this later 
       }

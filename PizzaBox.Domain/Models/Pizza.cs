@@ -15,6 +15,5 @@ namespace PizzaBox.Domain.Models
     public long CrustEntityId { get; set; }
     public long SizeEntityId { get; set; }
     public long OrderEntityId { get; set; }
-
   }
 }
