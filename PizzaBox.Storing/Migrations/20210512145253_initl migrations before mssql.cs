@@ -1,26 +1,27 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace PizzaBox.Storing.Migrations
 {
-    public partial class initmssqlmigrate : Migration
+    public partial class initlmigrationsbeforemssql : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<decimal>(
                 name: "Price",
                 table: "Toppings",
-                type: "decimal(18,2)",
+                type: "numeric",
                 nullable: false,
                 oldClrType: typeof(decimal),
-                oldType: "numeric");
+                oldType: "numeric(18,2)");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Toppings",
-                type: "nvarchar(max)",
+                type: "text",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "text",
+                oldType: "nvarchar(max)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<long>(
@@ -30,23 +31,23 @@ namespace PizzaBox.Storing.Migrations
                 nullable: false,
                 oldClrType: typeof(long),
                 oldType: "bigint")
-                .Annotation("SqlServer:Identity", "1, 1");
+                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             migrationBuilder.AlterColumn<decimal>(
                 name: "Price",
                 table: "Sizes",
-                type: "decimal(18,2)",
+                type: "numeric",
                 nullable: false,
                 oldClrType: typeof(decimal),
-                oldType: "numeric");
+                oldType: "numeric(18,2)");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Sizes",
-                type: "nvarchar(max)",
+                type: "text",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "text",
+                oldType: "nvarchar(max)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<long>(
@@ -56,7 +57,7 @@ namespace PizzaBox.Storing.Migrations
                 nullable: false,
                 oldClrType: typeof(long),
                 oldType: "bigint")
-                .Annotation("SqlServer:Identity", "1, 1");
+                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             migrationBuilder.AlterColumn<long>(
                 name: "EntityId",
@@ -65,7 +66,7 @@ namespace PizzaBox.Storing.Migrations
                 nullable: false,
                 oldClrType: typeof(long),
                 oldType: "bigint")
-                .Annotation("SqlServer:Identity", "1, 1");
+                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             migrationBuilder.AlterColumn<long>(
                 name: "EntityId",
@@ -74,15 +75,15 @@ namespace PizzaBox.Storing.Migrations
                 nullable: false,
                 oldClrType: typeof(long),
                 oldType: "bigint")
-                .Annotation("SqlServer:Identity", "1, 1");
+                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Customers",
-                type: "nvarchar(max)",
+                type: "text",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "text",
+                oldType: "nvarchar(max)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<long>(
@@ -92,23 +93,23 @@ namespace PizzaBox.Storing.Migrations
                 nullable: false,
                 oldClrType: typeof(long),
                 oldType: "bigint")
-                .Annotation("SqlServer:Identity", "1, 1");
+                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             migrationBuilder.AlterColumn<decimal>(
                 name: "Price",
                 table: "Crusts",
-                type: "decimal(18,2)",
+                type: "numeric",
                 nullable: false,
                 oldClrType: typeof(decimal),
-                oldType: "numeric");
+                oldType: "numeric(18,2)");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Crusts",
-                type: "nvarchar(max)",
+                type: "text",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "text",
+                oldType: "nvarchar(max)",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<long>(
@@ -118,7 +119,7 @@ namespace PizzaBox.Storing.Migrations
                 nullable: false,
                 oldClrType: typeof(long),
                 oldType: "bigint")
-                .Annotation("SqlServer:Identity", "1, 1");
+                .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -126,18 +127,18 @@ namespace PizzaBox.Storing.Migrations
             migrationBuilder.AlterColumn<decimal>(
                 name: "Price",
                 table: "Toppings",
-                type: "numeric",
+                type: "numeric(18,2)",
                 nullable: false,
                 oldClrType: typeof(decimal),
-                oldType: "decimal(18,2)");
+                oldType: "numeric");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Toppings",
-                type: "text",
+                type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "text",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<long>(
@@ -147,23 +148,23 @@ namespace PizzaBox.Storing.Migrations
                 nullable: false,
                 oldClrType: typeof(long),
                 oldType: "bigint")
-                .OldAnnotation("SqlServer:Identity", "1, 1");
+                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             migrationBuilder.AlterColumn<decimal>(
                 name: "Price",
                 table: "Sizes",
-                type: "numeric",
+                type: "numeric(18,2)",
                 nullable: false,
                 oldClrType: typeof(decimal),
-                oldType: "decimal(18,2)");
+                oldType: "numeric");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Sizes",
-                type: "text",
+                type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "text",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<long>(
@@ -173,7 +174,7 @@ namespace PizzaBox.Storing.Migrations
                 nullable: false,
                 oldClrType: typeof(long),
                 oldType: "bigint")
-                .OldAnnotation("SqlServer:Identity", "1, 1");
+                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             migrationBuilder.AlterColumn<long>(
                 name: "EntityId",
@@ -182,7 +183,7 @@ namespace PizzaBox.Storing.Migrations
                 nullable: false,
                 oldClrType: typeof(long),
                 oldType: "bigint")
-                .OldAnnotation("SqlServer:Identity", "1, 1");
+                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             migrationBuilder.AlterColumn<long>(
                 name: "EntityId",
@@ -191,15 +192,15 @@ namespace PizzaBox.Storing.Migrations
                 nullable: false,
                 oldClrType: typeof(long),
                 oldType: "bigint")
-                .OldAnnotation("SqlServer:Identity", "1, 1");
+                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Customers",
-                type: "text",
+                type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "text",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<long>(
@@ -209,23 +210,23 @@ namespace PizzaBox.Storing.Migrations
                 nullable: false,
                 oldClrType: typeof(long),
                 oldType: "bigint")
-                .OldAnnotation("SqlServer:Identity", "1, 1");
+                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
             migrationBuilder.AlterColumn<decimal>(
                 name: "Price",
                 table: "Crusts",
-                type: "numeric",
+                type: "numeric(18,2)",
                 nullable: false,
                 oldClrType: typeof(decimal),
-                oldType: "decimal(18,2)");
+                oldType: "numeric");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Crusts",
-                type: "text",
+                type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "text",
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<long>(
@@ -235,7 +236,7 @@ namespace PizzaBox.Storing.Migrations
                 nullable: false,
                 oldClrType: typeof(long),
                 oldType: "bigint")
-                .OldAnnotation("SqlServer:Identity", "1, 1");
+                .OldAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
         }
     }
 }
