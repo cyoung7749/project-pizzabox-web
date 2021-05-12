@@ -47,8 +47,8 @@ jobs:
               creds: ${{ secrets.AZURE_CREDENTIALS }}
         - uses: azure/webapps-deploy@v2
             with:
-                app-name: pizzabox258
-                images: cyoung7749/pizzabox
+              app-name: pizzabox258
+              images: cyoung7749/pizzabox
 on: 
     push:
         branches:
