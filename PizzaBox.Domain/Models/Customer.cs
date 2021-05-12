@@ -6,6 +6,7 @@ namespace PizzaBox.Domain.Models
   public class Customer : Entity
   {
     public string Name { get; set; }
+    public ICollection<Order> Orders { get; set; }
 
     public override string ToString()
     {
