@@ -39,9 +39,8 @@ namespace PizzaBox.Client.Controllers
     }
     public IActionResult History()
     {
-      var order = new OrderViewModel();
-      order.Load(_unitOfWork);
-      return View("History", order);
+
+      return View("History");
       //same thing from order controller
     }
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
