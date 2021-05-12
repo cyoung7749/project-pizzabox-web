@@ -37,7 +37,13 @@ namespace PizzaBox.Client.Controllers
       return View("order", order);
       //same thing from order controller
     }
-
+    public IActionResult Customer()
+    {
+      var order = new OrderViewModel();
+      order.Load(_unitOfWork);
+      return View("Checkout", order);
+      //same thing from order controller
+    }
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

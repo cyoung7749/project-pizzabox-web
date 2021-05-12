@@ -8,7 +8,7 @@ using PizzaBox.Storing;
 
 namespace PizzaBox.Client.Controllers
 {
-  [Route("[controller]")]
+  [Route("Order/Checkout")]
   public class CustomerController : Controller
   {
     public readonly UnitOfWork _unitOfWork;
@@ -20,12 +20,6 @@ namespace PizzaBox.Client.Controllers
     [HttpGet]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Customer()
-    {
-      var order = new OrderViewModel();
-      order.Load(_unitOfWork);
-      return View("Checkout", order);  //take out the OrderViewModel
-    }
     public IActionResult Create(CustomerViewModel order)
     {
       if (ModelState.IsValid)
