@@ -30,8 +30,8 @@ namespace PizzaBox.Client
       services.AddScoped<UnitOfWork>(); //scoped, transient, singleton
       services.AddDbContext<PizzaBoxContext>(options =>
             {
-              options.UseNpgsql(Configuration.GetConnectionString("pgsql"));
-              //options.UseSqlServer(Configuration.GetConnectionString("mssql"));
+              //options.UseNpgsql(Configuration.GetConnectionString("pgsql"));
+              options.UseSqlServer(Configuration.GetConnectionString("mssql"));
             });   //for connecting to the database
     }
 
