@@ -20,6 +20,12 @@ namespace PizzaBox.Client.Controllers
     [HttpGet]
     [HttpPost]
     [ValidateAntiForgeryToken]
+    public IActionResult Customer()
+    {
+      var order = new OrderViewModel();
+      order.Load(_unitOfWork);
+      return View("Checkout", order);  //take out the OrderViewModel
+    }
     public IActionResult Create(CustomerViewModel order)
     {
       if (ModelState.IsValid)
@@ -30,10 +36,10 @@ namespace PizzaBox.Client.Controllers
         _unitOfWork.Orders.Update(newOrder);
         _unitOfWork.Save();
         ViewBag.Order = newOrder;
-        return View("Home"); //change this later 
+        return View("Customer"); //change this later 
       }
       order.Load(_unitOfWork);
-      return View("Customer", order); //data binding
+      return View("Checkout", order); //data binding
     }
   }
 }

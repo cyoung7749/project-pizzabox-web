@@ -30,12 +30,6 @@ namespace PizzaBox.Client.Controllers
       return View();
     }
     [HttpGet]
-    public IActionResult Store()
-    {
-      var order = new OrderViewModel();
-      order.Load(_unitOfWork);
-      return View("Store", order);  //take out the OrderViewModel
-    }
     public IActionResult Order()
     {
       var order = new OrderViewModel();
@@ -43,10 +37,7 @@ namespace PizzaBox.Client.Controllers
       return View("order", order);
       //same thing from order controller
     }
-    public IActionResult Customer()
-    {
-      return View("customer");
-    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

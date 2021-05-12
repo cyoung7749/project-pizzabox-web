@@ -42,7 +42,7 @@ namespace PizzaBox.Client.Controllers
 
         _unitOfWork.Orders.Update(newOrder);
         ViewBag.Order = newOrder;
-        return Redirect("Checkout"); //change this later 
+        return RedirectToAction("Customer"); //change this later 
       }
       order.Load(_unitOfWork);
       return View("Order", order); //data binding
