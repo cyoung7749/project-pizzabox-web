@@ -34,7 +34,7 @@ namespace PizzaBox.Client.Controllers
     {
       var order = new OrderViewModel();
       order.Load(_unitOfWork);
-      return View("order", order);
+      return View("Order", order);
       //same thing from order controller
     }
     public IActionResult History()
