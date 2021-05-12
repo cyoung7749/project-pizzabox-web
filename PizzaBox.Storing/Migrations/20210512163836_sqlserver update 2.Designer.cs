@@ -10,8 +10,8 @@ using PizzaBox.Storing;
 namespace PizzaBox.Storing.Migrations
 {
     [DbContext(typeof(PizzaBoxContext))]
-    [Migration("20210512150029_initl migrations for  mssql")]
-    partial class initlmigrationsformssql
+    [Migration("20210512163836_sqlserver update 2")]
+    partial class sqlserverupdate2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

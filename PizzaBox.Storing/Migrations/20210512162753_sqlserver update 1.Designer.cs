@@ -10,7 +10,7 @@ using PizzaBox.Storing;
 namespace PizzaBox.Storing.Migrations
 {
     [DbContext(typeof(PizzaBoxContext))]
-    [Migration("20210512161848_sqlserver update 1")]
+    [Migration("20210512162753_sqlserver update 1")]
     partial class sqlserverupdate1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
