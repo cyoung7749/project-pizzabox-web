@@ -1,0 +1,25 @@
+@{
+  ViewData["Title"] = "Checkout Page";
+}
+
+<h2>Order Received</h2>
+@foreach (var item in ViewBag.Order.Pizzas)
+{
+  <p>Crust: @item.Crust</p>
+  <p>Size: @item.Size</p>
+  <p>Toppings:</p>
+
+  <ul>
+  @foreach (var thing in item.Toppings)
+    {
+      <li>@thing</li>
+    }
+  </ul>
+
+}
+<div>Total Cost: $ @ViewBag.Total</div>
+
+<form>
+  <button asp-controller="Home" asp-action="Index">Return home</button>
+
+</form>

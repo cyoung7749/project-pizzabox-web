@@ -1,0 +1,41 @@
+@{
+  ViewData["Title"] = "Store Side";
+}
+
+<div class="text-center">
+  <h1 class="display-4">Employees only (Testing Tag Helper Method)</h1>
+  <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@model PizzaBox.Client.Models.OrderViewModel
+
+@* TAG HELPER *@
+<form asp-controller="Order" asp-action="order" method="post">
+  <legend>CRUSS</legend>@Html.ValidationMessageFor(m => m.SelectedSize)
+  @foreach (var item in Model.Sizes)
+  {
+    <div class="form-check">
+      <input class="form-check-input" id="@item" type="radio" asp-for="SelectedCrust" value="@item">
+      <label class="form-check-label" for="@item">@item</label>
+    </div>
+  }<br>
+
+  <legend>SIEZ</legend> @Html.ValidationMessageFor(m => m.SelectedCrust)
+  @foreach (var item in Model.Crusts)
+  {
+    <div class="form-check">
+      <input class="form-check-input" id="@item" type="radio" asp-for="SelectedSize" value="@item">
+      <label class="form-check-label" for="@item">@item</label>
+    </div>
+  }<br>
+  <legend>TOPPIN</legend>
+  @Html.ValidationMessageFor(m => m.SelectedToppings)
+
+  @foreach (var item in Model.Toppings)
+  {
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="@item" name="selectedtoppings" value="@item">
+      <label class="form-check-label" for="@item">@item</label>
+    </div>
+  }
+  <button type="submit">make pizza</button>
+</form>
