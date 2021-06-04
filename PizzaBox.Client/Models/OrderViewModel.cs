@@ -36,7 +36,6 @@ namespace PizzaBox.Client.Models
       Sizes = unitOfWork.Sizes.Create(s => !string.IsNullOrWhiteSpace(s.Name)).ToList();
       Toppings = unitOfWork.Toppings.Create(t => !string.IsNullOrWhiteSpace(t.Name)).ToList();
       Customers = unitOfWork.Customers.Create(c => !string.IsNullOrWhiteSpace(c.Name)).ToList();
-
     }
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
